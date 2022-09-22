@@ -1,43 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Logo from "./logo";
 import Navbar from "./navbar";
 
-const Header = () => {
-  const useWindowDimensions = () => {
-    const hasWindow = typeof window !== "undefined";
+const useMediaQuery = (width) => {
+  const [targetReached, setTargetReached] = useState(false);
 
-    function getWindowDimensions() {
-      const width = hasWindow ? window.innerWidth : null;
-      const height = hasWindow ? window.innerHeight : null;
-      return {
-        width,
-        height,
-      };
+  const updateTarget = useCallback((e) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handler = (e) => updateTarget(e);
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addEventListener("change", handler);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
     }
 
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    );
+    return () => media.removeEventListener("change", handler);
+  }, [updateTarget, width]);
 
-    useEffect(() => {
-      if (hasWindow) {
-        function handleResize() {
-          setWindowDimensions(getWindowDimensions());
-        }
+  return targetReached;
+};
 
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-      }
-    });
-
-    return windowDimensions;
-  };
-
-  const { height, width } = useWindowDimensions();
-  const breakpoint = 501;
+const Header = () => {
+  const breakpoint = useMediaQuery(510);
   return (
     <div className="h-36 bg-gray-800">
-      {width > breakpoint ? (
+      {breakpoint ? (
+        <div>
+          <h1>Lower than 480</h1>{" "}
+        </div>
+      ) : (
         <div>
           <div className="absolute right-0 mt-16 mr-10">
             <Navbar />
@@ -45,10 +45,6 @@ const Header = () => {
           <div className="absolute">
             <Logo />
           </div>
-        </div>
-      ) : (
-        <div>
-          <h1>Lower than 480</h1>{" "}
         </div>
       )}
     </div>

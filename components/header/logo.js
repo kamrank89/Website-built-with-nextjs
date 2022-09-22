@@ -1,10 +1,11 @@
 import Image from "next/image";
 
 export default function Logo() {
+  const imageSource = "/Logo.png";
   return (
     <div className="ml-8 mt-8">
       <Image
-        src={"/Logo.png"}
+        src={imageSource}
         alt=""
         width={200}
         height={70}
