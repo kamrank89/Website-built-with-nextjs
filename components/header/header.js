@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import Logo from "./logo";
+import Navbar from "./navbar";
 
-const Home = () => {
+const Header = () => {
   const useWindowDimensions = () => {
     const hasWindow = typeof window !== "undefined";
 
@@ -34,10 +36,15 @@ const Home = () => {
   const { height, width } = useWindowDimensions();
   const breakpoint = 501;
   return (
-    <div>
+    <div className="h-36 bg-gray-800">
       {width > breakpoint ? (
         <div>
-          <h1>Higher than 480</h1>
+          <div className="absolute right-0 mt-16 mr-10">
+            <Navbar />
+          </div>
+          <div className="absolute">
+            <Logo />
+          </div>
         </div>
       ) : (
         <div>
@@ -47,4 +54,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Header;

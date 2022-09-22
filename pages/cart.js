@@ -1,10 +1,10 @@
 import Header from "../components/header/header";
 
-export default function contact() {
+export default function cart() {
   return (
     <div>
       <Header />
-      this is the contact us page
+      this is the cart page
     </div>
   );
 }
