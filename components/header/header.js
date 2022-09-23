@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import DropDown from "./dropdown";
 import Logo from "./logo";
 import Navbar from "./navbar";
 
@@ -30,12 +31,12 @@ const useMediaQuery = (width) => {
 };
 
 const Header = () => {
-  const breakpoint = useMediaQuery(510);
+  const breakpoint = useMediaQuery(780);
   return (
     <div className="h-36 bg-gray-800">
       {breakpoint ? (
-        <div>
-          <h1>Lower than 480</h1>{" "}
+        <div className="absolute right-0 mt-16 mr-16">
+          <DropDown />
         </div>
       ) : (
         <div>
