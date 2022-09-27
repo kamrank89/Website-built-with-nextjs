@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
-import DropDown from "./dropdown";
-import Logo from "./logo";
-import Navbar from "./navbar";
+import DropDown from "./header-components/dropdown";
+import Logo from "./header-components/logo";
+import Navbar from "./header-components/navbar";
+import SignIn from "./header-components/singin";
 
 const useMediaQuery = (width) => {
   const [targetReached, setTargetReached] = useState(false);
@@ -31,7 +32,7 @@ const useMediaQuery = (width) => {
 };
 
 const Header = () => {
-  const breakpoint = useMediaQuery(780);
+  const breakpoint = useMediaQuery(910);
   return (
     <div className="h-36 bg-gray-800">
       {breakpoint ? (
@@ -40,11 +41,14 @@ const Header = () => {
         </div>
       ) : (
         <div>
-          <div className="absolute right-0 mt-16 mr-10">
+          <div className="absolute right-0 mt-20 mr-10">
             <Navbar />
           </div>
           <div className="absolute">
             <Logo />
+          </div>
+          <div className="absolute right-0 mt-4 mr-10 ">
+            <SignIn />
           </div>
         </div>
       )}
