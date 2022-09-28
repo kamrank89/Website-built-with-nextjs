@@ -12,5 +12,9 @@ export default NextAuth({
       clientId: process.env.Github_ID,
       clientSecret: process.env.Github_secret,
     }),
+    GoogleProvider({
+      clientId: process.env.Google_ID,
+      clientSecret: process.env.Google_Secret,
+    }),
   ],
 });

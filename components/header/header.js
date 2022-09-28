@@ -36,8 +36,16 @@ const Header = () => {
   return (
     <div className="h-36 bg-gray-800">
       {breakpoint ? (
-        <div className="absolute right-0 mt-16 mr-16">
-          <DropDown />
+        <div>
+          <div className="absolute right-0 mt-16 mr-16">
+            <DropDown />
+          </div>
+          <div className="absolute">
+            <Logo />
+          </div>
+          <div className="absolute right-0 mt-4 mr-10 ">
+            <SignIn />
+          </div>
         </div>
       ) : (
         <div>
