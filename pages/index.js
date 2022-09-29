@@ -30,47 +30,51 @@ export default function Home({ products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-      <form onSubmit={createData}>
-        <input
-          spellCheck="off"
-          placeholder="title-items"
-          type="text"
-          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
-          name="title"
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <form onSubmit={createData}>
+          <input
+            spellCheck="off"
+            placeholder="title-items"
+            type="text"
+            className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+            name="title"
 
-          // onClick={deleteTest}
-        />
-        <input
-          spellCheck="off"
-          placeholder="body-items"
-          type="text"
-          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
-          name="body"
+            // onClick={deleteTest}
+          />
+          <input
+            spellCheck="off"
+            placeholder="body-items"
+            type="text"
+            className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+            name="body"
 
-          // onClick={deleteTest}
-        />
-        <input
-          spellCheck="off"
-          placeholder="image-items"
-          type="text"
-          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
-          name="image"
+            // onClick={deleteTest}
+          />
+          <input
+            spellCheck="off"
+            placeholder="image-items"
+            type="text"
+            className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+            name="image"
 
-          // onClick={deleteTest}
-        />
-        <button className="bg-gray-300 rounded m-24" type="submit">
-          Submit
-        </button>
-      </form>
-      {products.map((product) => (
-        <div key={product._id}>
-          <h1> Title : {product.title}</h1>
-          <h1> body : {product.body}</h1>
-          <h1> image : {product.image}</h1>
-        </div>
-      ))}
-      <Footer />
+            // onClick={deleteTest}
+          />
+          <button className="bg-gray-300 rounded" type="submit">
+            Submit
+          </button>
+        </form>
+        {products.map((product) => (
+          <div key={product._id}>
+            <h1> Title : {product.title}</h1>
+            <h1> body : {product.body}</h1>
+            <h1> image : {product.image}</h1>
+          </div>
+        ))}
+      </div>
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }

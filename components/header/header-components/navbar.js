@@ -13,9 +13,7 @@ export default function Navbar() {
           <li className="rounded bg-gray-400 text-lg p-2 w-28  text-center hover:bg-gray-800 hover:text-white">
             <Link href="/products"> Products </Link>
           </li>
-          <li className="rounded bg-gray-400 text-lg p-2 w-28  text-center hover:bg-gray-800 hover:text-white">
-            <Link href="/about">About Us </Link>
-          </li>
+
           <li className="rounded bg-gray-400 text-lg p-2 w-28 text-center  hover:bg-gray-800 hover:text-white">
             <Link href="/contact">Contact Us</Link>
           </li>
@@ -36,9 +34,7 @@ export default function Navbar() {
         <li className="rounded bg-gray-400 text-center text-lg w-28 p-2 hover:bg-gray-800 hover:text-white">
           <Link href="/products"> Products </Link>
         </li>
-        <li className="rounded bg-gray-400 text-center text-lg w-28 p-2 hover:bg-gray-800 hover:text-white">
-          <Link href="/about">About Us </Link>
-        </li>
+
         <li className="rounded bg-gray-400 text-center text-lg w-28 p-2 hover:bg-gray-800 hover:text-white">
           <Link href="/contact">Contact Us</Link>
         </li>

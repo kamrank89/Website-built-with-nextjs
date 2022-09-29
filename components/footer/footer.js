@@ -1,7 +1,11 @@
 import FooterNavbar from "./footer-components.js/footerNavbar";
 
 function Footer() {
-  return <FooterNavbar />;
+  return (
+    <div className="mt-auto">
+      <FooterNavbar />
+    </div>
+  );
 }
 
 export default Footer;

@@ -24,9 +24,7 @@ export default function DropDown() {
               <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
                 <Link href="/products"> Products </Link>
               </div>
-              <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
-                <Link href="/about">About Us </Link>
-              </div>
+
               <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
                 <Link href="/contact">Contact Us</Link>
               </div>
@@ -56,9 +54,7 @@ export default function DropDown() {
             <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
               <Link href="/products"> Products </Link>
             </div>
-            <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
-              <Link href="/about">About Us </Link>
-            </div>
+
             <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
               <Link href="/contact">Contact Us</Link>
             </div>
