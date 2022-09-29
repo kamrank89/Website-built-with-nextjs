@@ -1,9 +1,27 @@
 import Head from "next/head";
 import Footer from "../components/footer/footer";
 import Header from "../components/header/header";
-import Script from "next/script";
+import dataBaseConnection from "../database/connection";
+import Product from "../database/productmodel";
 
-export default function Home() {
+export default function Home({ products }) {
+  const createData = async (e) => {
+    const dataTitle = e.target.title.value;
+    const bodyTitle = e.target.body.value;
+    const imageTitle = e.target.image.value;
+    const res = await fetch("api/database/adddata", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        title: dataTitle,
+        body: bodyTitle,
+        image: imageTitle,
+      }),
+    });
+    const result = await res.json();
+  };
   return (
     <div>
       <Head>
@@ -13,49 +31,51 @@ export default function Home() {
       </Head>
 
       <Header />
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
-      <h1>This is homepage</h1>
+      <form onSubmit={createData}>
+        <input
+          spellCheck="off"
+          placeholder="title-items"
+          type="text"
+          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+          name="title"
 
+          // onClick={deleteTest}
+        />
+        <input
+          spellCheck="off"
+          placeholder="body-items"
+          type="text"
+          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+          name="body"
+
+          // onClick={deleteTest}
+        />
+        <input
+          spellCheck="off"
+          placeholder="image-items"
+          type="text"
+          className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
+          name="image"
+
+          // onClick={deleteTest}
+        />
+        <button className="bg-gray-300 rounded m-24" type="submit">
+          Submit
+        </button>
+      </form>
+      {products.map((product) => (
+        <div key={product._id}>
+          <h1> Title : {product.title}</h1>
+          <h1> body : {product.body}</h1>
+          <h1> image : {product.image}</h1>
+        </div>
+      ))}
       <Footer />
     </div>
   );
+}
+export async function getServerSideProps() {
+  await dataBaseConnection();
+  const products = await Product.find({});
+  return { props: { products: JSON.parse(JSON.stringify(products)) } };
 }
