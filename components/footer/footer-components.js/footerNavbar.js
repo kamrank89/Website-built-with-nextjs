@@ -9,14 +9,36 @@ import {
 
 export default function FooterNavbar() {
   return (
-    <div className="relative h-auto bg-gray-800">
-      <div className="relative mx-auto bg-slate-500 flex flex-col  w-24 rounded">
-        <h1 className="bg-slate-600 text-3xl">Socials</h1>
-        <FontAwesomeIcon icon={faInstagram} size="3x" />
-        <FontAwesomeIcon icon={faTwitter} size="3x" />
-        <FontAwesomeIcon icon={faFacebook} size="3x" />
-        <FontAwesomeIcon icon={faYoutube} size="3x" />
-        <FontAwesomeIcon icon={faLinkedin} size="3x" />
+    <div className="mr-24 space-y-4 h-auto bg-gray-800">
+      <div className="text-white text-3xl text-center hover:text-yellow-400 cursor-pointer">
+        <h1>Socials</h1>
+      </div>
+      <div className="mx-auto space-y-1 bg-slate-500 flex flex-col w-16 rounded">
+        <FontAwesomeIcon
+          icon={faInstagram}
+          size="3x"
+          className="hover:bg-slate-800 cursor-pointer"
+        />
+        <FontAwesomeIcon
+          icon={faTwitter}
+          size="3x"
+          className="hover:bg-slate-800 cursor-pointer"
+        />
+        <FontAwesomeIcon
+          icon={faFacebook}
+          size="3x"
+          className="hover:bg-slate-800 cursor-pointer"
+        />
+        <FontAwesomeIcon
+          icon={faYoutube}
+          size="3x"
+          className="hover:bg-slate-800 cursor-pointer"
+        />
+        <FontAwesomeIcon
+          icon={faLinkedin}
+          size="3x"
+          className="hover:bg-slate-800 cursor-pointer"
+        />
       </div>
     </div>
   );
