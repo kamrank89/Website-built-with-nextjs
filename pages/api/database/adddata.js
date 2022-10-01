@@ -1,5 +1,5 @@
 import dataBaseConnection from "../../../database/connection";
-import Product from "../../../database/productmodel";
+import Product from "../../../database/models/productmodel";
 
 const addData = async (req, res) => {
   dataBaseConnection();

@@ -2,9 +2,11 @@ import Head from "next/head";
 import Footer from "../components/footer/footer";
 import Header from "../components/header/header";
 import dataBaseConnection from "../database/connection";
-import Product from "../database/productmodel";
+import Product from "../database/models/productmodel";
+import { useRouter } from "next/router";
 
 export default function Home({ products }) {
+  const router = useRouter();
   const createData = async (e) => {
     const dataTitle = e.target.title.value;
     const bodyTitle = e.target.body.value;
@@ -21,6 +23,7 @@ export default function Home({ products }) {
       }),
     });
     const result = await res.json();
+    router.reload();
   };
   return (
     <div>
