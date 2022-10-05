@@ -36,25 +36,33 @@ apiRouter.get((req, res) => {
 });
 apiRouter.post((req, res) => {
   let uploadedImage = "";
-  cloudinary.uploader.upload(req.file.path, async (err, result) => {
-    if (err) console.log(err);
+  cloudinary.uploader.upload(
+    req.file.path,
+    { folder: "test" },
+    async (err, result) => {
+      if (err) console.log(err);
 
-    uploadedImage = await result.secure_url;
-    console.log(uploadedImage);
-    dataBaseConnection();
-    const item1 = req.body.title;
-    const item2 = req.body.body;
-    const item3 = uploadedImage;
-    console.log(uploadedImage);
-    fs.unlinkSync(req.file.path);
-    const newProduct = new Product({ title: item1, body: item2, image: item3 });
-    newProduct.save((err) => {
-      if (err) {
-        console.log(err);
-      }
-      return console.log("new product has been added");
-    });
-  });
+      uploadedImage = await result.secure_url;
+      console.log(uploadedImage);
+      dataBaseConnection();
+      const item1 = req.body.title;
+      const item2 = req.body.body;
+      const item3 = uploadedImage;
+      console.log(uploadedImage);
+      fs.unlinkSync(req.file.path);
+      const newProduct = new Product({
+        title: item1,
+        body: item2,
+        image: item3,
+      });
+      newProduct.save((err) => {
+        if (err) {
+          console.log(err);
+        }
+        return console.log("new product has been added");
+      });
+    }
+  );
   res.redirect("/");
 });
 // const addData = async (req, res) => {

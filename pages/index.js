@@ -57,12 +57,7 @@ export default function Home({ products }) {
           <div key={product._id}>
             <h1> Title : {product.title}</h1>
             <h1> body : {product.body}</h1>
-            <Image
-              src="https://res.cloudinary.com/dz9jupdkl/image/upload/v1664985718/lihsiescy41ulfpfrsga.jpg"
-              alt="test"
-              width={100}
-              height={100}
-            />
+            <Image src={product.image} alt="test" width={100} height={100} />
           </div>
         ))}
       </div>
