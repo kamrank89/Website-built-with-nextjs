@@ -4,27 +4,9 @@ import Header from "../components/header/header";
 import dataBaseConnection from "../database/connection";
 import Product from "../database/models/productmodel";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Home({ products }) {
-  const router = useRouter();
-  const createData = async (e) => {
-    const dataTitle = e.target.title.value;
-    const bodyTitle = e.target.body.value;
-    const imageTitle = e.target.image.value;
-    const res = await fetch("api/database/adddata", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        title: dataTitle,
-        body: bodyTitle,
-        image: imageTitle,
-      }),
-    });
-    const result = await res.json();
-    router.reload();
-  };
   return (
     <div>
       <Head>
@@ -35,7 +17,11 @@ export default function Home({ products }) {
 
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
-        <form onSubmit={createData}>
+        <form
+          action="/api/database/adddata"
+          method="post"
+          encType="multipart/form-data"
+        >
           <input
             spellCheck="off"
             placeholder="title-items"
@@ -57,7 +43,7 @@ export default function Home({ products }) {
           <input
             spellCheck="off"
             placeholder="image-items"
-            type="text"
+            type="file"
             className="m-3 bg-gray-400 placeholder-black placeholder-opacity-50"
             name="image"
 
@@ -71,7 +57,12 @@ export default function Home({ products }) {
           <div key={product._id}>
             <h1> Title : {product.title}</h1>
             <h1> body : {product.body}</h1>
-            <h1> image : {product.image}</h1>
+            <Image
+              src="https://res.cloudinary.com/dz9jupdkl/image/upload/v1664985718/lihsiescy41ulfpfrsga.jpg"
+              alt="test"
+              width={100}
+              height={100}
+            />
           </div>
         ))}
       </div>
