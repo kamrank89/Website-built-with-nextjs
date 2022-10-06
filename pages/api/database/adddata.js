@@ -3,9 +3,7 @@ import Product from "../../../database/models/productmodel";
 import nc from "next-connect";
 import multer from "multer";
 import fs from "fs";
-import path from "path";
 import { v2 as cloudinary } from "cloudinary";
-import { useRouter } from "next/router";
 
 const upload = multer({
   storage: multer.diskStorage({
