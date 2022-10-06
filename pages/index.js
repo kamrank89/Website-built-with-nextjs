@@ -3,7 +3,6 @@ import Footer from "../components/footer/footer";
 import Header from "../components/header/header";
 import dataBaseConnection from "../database/connection";
 import Product from "../database/models/productmodel";
-import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Home({ products }) {

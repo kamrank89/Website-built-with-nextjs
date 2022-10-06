@@ -5,6 +5,7 @@ import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import { useRouter } from "next/router";
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -42,7 +43,7 @@ apiRouter.post((req, res) => {
     async (err, result) => {
       if (err) console.log(err);
 
-      uploadedImage = await result.secure_url;
+      uploadedImage = result.secure_url;
       console.log(uploadedImage);
       dataBaseConnection();
       const item1 = req.body.title;
@@ -63,6 +64,7 @@ apiRouter.post((req, res) => {
       });
     }
   );
+
   res.redirect("/");
 });
 // const addData = async (req, res) => {
