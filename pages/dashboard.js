@@ -1,13 +1,17 @@
 import dataBaseConnection from "../database/connection";
 import Token from "../database/models/admintoken";
 const Dashboard = ({ tokens }) => {
+    const deleteItem = awync () => {
+        const res = await fetch ('api/database/authenticatedadmin')
+        // Todo : removing data request need to be added
+    }
   return (
     <div>
       {tokens[0].title === "test" ? (
         <div>
           <h1>you are authorized</h1>
 
-          <button type="submit" className="bg-slate-300">
+          <button onClick={deleteItem} className="bg-slate-300">
             Log Out!
           </button>
         </div>
