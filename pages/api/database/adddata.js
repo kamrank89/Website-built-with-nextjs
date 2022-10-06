@@ -58,7 +58,7 @@ apiRouter.post((req, res) => {
         if (err) {
           console.log(err);
         }
-        return console.log("new product has been added");
+        return console.log(`${newProduct.title} has been added to database`);
       });
     }
   );

@@ -1,10 +1,33 @@
 import dataBaseConnection from "../../../database/connection";
 import Info from "../../../database/models/adminmodel";
+import nc from "next-connect";
+import bcrypt from "bcrypt";
 
-const addAdminData = async (req, res) => {
+const apiRouterForAdmin = nc({
+  onNoMatch(req, res) {
+    res.statusCode(405), json({ error: `method ${req.method} not allowed` });
+  },
+});
+
+apiRouterForAdmin.get((req, res) => {
+  res.send("hi there this add admin data API");
+});
+
+apiRouterForAdmin.post((req, res) => {
   dataBaseConnection();
-  const firstAdmin = Info.create(req.body);
-  res.json({ firstAdmin });
-};
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.password, salt);
+  const newAdmin = new Info({
+    username: req.body.username,
+    password: hash,
+  });
 
-export default addAdminData;
+  newAdmin.save((err) => {
+    if (err) return console.log(err);
+    return console.log(`${newAdmin.username} has been added to admin database`);
+  });
+  console.log(newAdmin);
+  res.redirect("/dashboard");
+});
+
+export default apiRouterForAdmin;
