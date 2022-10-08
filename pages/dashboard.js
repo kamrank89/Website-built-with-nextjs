@@ -1,4 +1,5 @@
 import dataBaseConnection from "../database/connection";
+import Link from "next/link";
 import Token from "../database/models/admintoken";
 
 const Dashboard = (tokens) => {
@@ -7,20 +8,21 @@ const Dashboard = (tokens) => {
   // };
   //   // TODO :  removing data request need to be added
   // };
+  if (tokens.tokens[0]) {
+    return (
+      <div>
+        <h1>you are authorized</h1>
 
+        <Link href="/">
+          <button className="bg-slate-300">Log Out!</button>
+        </Link>
+      </div>
+    );
+  }
   return (
     <div>
-      {tokens.tokens[0].title === "test" ? (
-        <div>
-          <h1>you are authorized</h1>
-
-          <button className="bg-slate-300">Log Out!</button>
-        </div>
-      ) : (
-        <div>
-          <h1> You are not authorized to access this page !!! </h1>
-        </div>
-      )}
+      <h1> You are not authorized to access this page please Log in !!! </h1>
+      <Link href="/adminloginpage">Log In</Link>
     </div>
   );
 };
@@ -29,7 +31,7 @@ export default Dashboard;
 
 export async function getServerSideProps() {
   await dataBaseConnection();
-  const tokens = await Token.find();
+  const tokens = await Token.find({});
   console.log(tokens);
   return { props: { tokens: JSON.parse(JSON.stringify(tokens)) } };
 }
