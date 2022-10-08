@@ -1,26 +1,38 @@
 const DashboardForm = () => {
   return (
-    <div>
+    <div className="flex bg-slate-400 w-1/6 justify-center rounded ">
       {/* TODO: coding the api address for this post */}
-      <form action="" method="post" encType="multipart/form-data">
-        <label htmlFor="shortDescription"></label>
-        <input type="shortDescription" />
-        <label htmlFor="longDescription"></label>
-        <input type="longDescription" />
-        <label htmlFor="price"></label>
+      <form
+        action=""
+        method="post"
+        encType="multipart/form-data"
+        className="flex flex-col "
+      >
+        <label htmlFor="shortDescription">shortDescription</label>
+        <input type="shortDescription" className="rounded" />
+        <label htmlFor="longDescription">longDescription</label>
+        <input type="longDescription" className="rounded" />
+        <label htmlFor="price">price</label>
         <input type="price" />
-        <label htmlFor="cardImage"></label>
-        <input type="cardImage" />
-        <label htmlFor="image1"></label>
-        <input type="image1" />
-        <label htmlFor="image2"></label>
-        <input type="image2" />
-        <label htmlFor="image3"></label>
-        <input type="image3" />
-        <label htmlFor="image4"></label>
-        <input type="image4" />
-        <label htmlFor="image5"></label>
-        <input type="image5" />
+        <label htmlFor="cardImage">cardImage</label>
+        <input type="cardImage" className="rounded" />
+        <label htmlFor="image1">image1</label>
+        <input type="image1" className="rounded" />
+        <label htmlFor="image2">image2</label>
+        <input type="image2" className="rounded" />
+        <label htmlFor="image3">image3</label>
+        <input type="image3" className="rounded" />
+        <label htmlFor="image4">image4</label>
+        <input type="image4" className="rounded" />
+        <label htmlFor="image5">image5</label>
+        <input type="image5" className="rounded" />
+        <button
+          type="submit"
+          className="rounded bg-slate-200 hover:bg-slate-500"
+        >
+          {" "}
+          Submit{" "}
+        </button>
       </form>
     </div>
   );

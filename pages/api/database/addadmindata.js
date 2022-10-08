@@ -2,6 +2,7 @@ import dataBaseConnection from "../../../database/connection";
 import Info from "../../../database/models/adminmodel";
 import nc from "next-connect";
 import bcrypt from "bcrypt";
+import Token from "../../../database/models/admintoken";
 
 const apiRouterForAdmin = nc({
   onNoMatch(req, res) {
@@ -28,6 +29,17 @@ apiRouterForAdmin.post((req, res) => {
   });
   console.log(newAdmin);
   res.redirect("/dashboard");
+});
+
+apiRouterForAdmin.delete(async (req, res) => {
+  dataBaseConnection();
+  const adminData = await Token.findOneAndDelete(
+    { title: "test" },
+    (err, foundItem) => {
+      if (err) console.log(err);
+      console.log(`${foundItem} has been deleted from database`);
+    }
+  );
 });
 
 export default apiRouterForAdmin;

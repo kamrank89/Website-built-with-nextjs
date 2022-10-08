@@ -21,23 +21,21 @@ const AdminLogin = (props) => {
             name="password"
             className="bg-slate-500 rounded w-4/6 mx-auto text-center"
           />
-          <Link href="/authenticatedadminloginpage">
-            <button
-              type="submit"
-              className="bg-slate-500 w-2/6 mx-auto rounded text-center"
-            >
-              {" "}
-              Login
-            </button>
-          </Link>
           <button
             type="submit"
             className="bg-slate-500 w-2/6 mx-auto rounded text-center"
           >
-            {" "}
             Sign In!
           </button>
         </form>
+        <Link href="/authenticatedadminloginpage">
+          <button
+            type="submit"
+            className="bg-slate-500 w-2/6 mx-auto rounded text-center"
+          >
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

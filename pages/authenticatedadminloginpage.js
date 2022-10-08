@@ -31,12 +31,4 @@ function AuthenticatedAdminLoginPage() {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  return {
-    props: {
-      data: null,
-    },
-  };
-}
-
 export default AuthenticatedAdminLoginPage;
