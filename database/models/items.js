@@ -6,11 +6,7 @@ const itemScheam = Schema({
   longDescription: String,
   price: Number,
   cardImage: String,
-  image1: String,
-  image2: String,
-  image3: String,
-  image4: String,
-  image5: String,
+  images: [String],
 });
 
 const Item = mongoose.models.Item || mongoose.model("Item", itemScheam);
