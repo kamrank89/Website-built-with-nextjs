@@ -24,7 +24,8 @@
     "next-connect": "^0.13.0",
     "nodemailer": "^6.7.8",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "tailwind-scrollbar": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
