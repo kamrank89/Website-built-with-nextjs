@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function FooterInfoBar() {
   return (
-    <div className="mr-36">
-      <div className="text-white text-2xl text-center  w-36">
+    <div className="mt-6">
+      <div className="text-white text-2xl text-center mx-auto w-36">
         <ul className="space-y-4">
           <li className="hover:text-yellow-400 cursor-pointer">
             <Link href="/">Home</Link>
@@ -19,7 +19,7 @@ export default function FooterInfoBar() {
         </ul>
       </div>
 
-      <div className="flex text-white text-xs text-center mt-36">
+      <div className="flex text-white mx-auto text-xs  w-48 mt-36">
         <FontAwesomeIcon icon={faCopyright} />
         <p>All rights reserved for kamran</p>
       </div>

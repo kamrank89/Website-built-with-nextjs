@@ -4,14 +4,15 @@ import FooterNavbar from "./footer-components.js/footerNavbar";
 
 function Footer() {
   return (
-    <div className="flex bg-gray-800 h-96 ">
-      <div className="ml-8 mt-8 ">
+    <div className="flex bg-gray-800 h-auto ">
+      <div className="w-1/3">
         <FooterInfo />
       </div>
-      <div className="mr-96 mt-12">
+      <div className="w-1/3">
+        {" "}
         <FooterInfoBar />
       </div>
-      <div className="m-8">
+      <div className="w-1/3 mx-auto">
         <FooterNavbar />
       </div>
     </div>

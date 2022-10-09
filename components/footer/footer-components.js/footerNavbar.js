@@ -9,7 +9,7 @@ import {
 
 export default function FooterNavbar() {
   return (
-    <div className="mr-24 space-y-4 h-auto bg-gray-800">
+    <div className="space-y-4 h-auto bg-gray-800 mt-6">
       <div className="text-white text-3xl text-center hover:text-yellow-400 cursor-pointer">
         <h1>Socials</h1>
       </div>

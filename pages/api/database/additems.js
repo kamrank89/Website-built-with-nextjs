@@ -23,17 +23,17 @@ const arrayOfImages = upload.fields([
   { name: "cardImage", maxCount: 1 },
   { name: "images", maxCount: 5 },
 ]);
-apiRouter.post(arrayOfImages, (req, res) => {
+apiRouter.post(arrayOfImages, async (req, res) => {
   const urlArray = [];
   let cardImage = "";
-  const imagesArray = req.files["images"];
+  const imagesArray = await req.files["images"];
   cloudinary.uploader.upload(
     req.files["cardImage"][0].path,
     { folder: "cardImages" },
-    async (err, result) => {
+    (err, result) => {
       if (err) console.log(err);
       cardImage = result.secure_url;
-      console.log(cardImage);
+      console.log(`this is the first call ${cardImage}`);
       fs.unlinkSync(req.files["cardImage"][0].path);
     }
   );
@@ -41,31 +41,28 @@ apiRouter.post(arrayOfImages, (req, res) => {
     cloudinary.uploader.upload(
       imagesArray[i].path,
       { folder: "Images" },
-      async (err, result) => {
+      (err, result) => {
         if (err) console.log(err);
         urlArray.push(result.secure_url);
-        console.log(urlArray);
         fs.unlinkSync(req.files["images"][i].path);
+        // TODO : need to implement the data save to database
+        dataBaseConnection();
+        const userItem = new Item({
+          shortDescription: req.body.shortDescription,
+          longDescription: req.body.longDescription,
+          price: req.body.itemPrice,
+          cardImage: cardImage,
+          images: urlArray,
+        });
+        userItem.save((err) => {
+          if (err) console.log(err);
+          return console.log("your prodcut has been added to database.");
+        });
       }
     );
   }
-  //   dataBaseConnection();
-  //   const userItem = new Item({
-  //     shortDescription: req.body.shortDescription,
-  //     longDescription: req.body.longDescription,
-  //     price: req.body.itemPrice,
-  //     cardImage: cardImage,
-  //     images: urlArray,
-  //   });
-
-  //   userItem.save((err) => {
-  //     if (err) console.log(err);
-  //     return console.log("your prodcut has been added to database.");
-  //   });
-
-  console.log(`test ${urlArray}`);
-
-  console.log(`test ${cardImage}`);
+  console.log(urlArray);
+  console.log(`this is the second call ${cardImage}`);
 
   res.redirect("/dashboard");
 });
