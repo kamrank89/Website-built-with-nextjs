@@ -45,6 +45,6 @@ export default Dashboard;
 export async function getServerSideProps() {
   await dataBaseConnection();
   const tokens = await Token.find({});
-  console.log(tokens);
+
   return { props: { tokens: JSON.parse(JSON.stringify(tokens)) } };
 }

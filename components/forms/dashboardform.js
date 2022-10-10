@@ -1,7 +1,6 @@
 const DashboardForm = () => {
   return (
     <div className="flex bg-slate-400 w-1/6 justify-center rounded ">
-      {/* TODO: coding the api address for this post */}
       <form
         action="/api/database/additems"
         method="post"
