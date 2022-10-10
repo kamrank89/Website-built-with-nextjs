@@ -2,22 +2,36 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import dataBaseConnection from "../../database/connection";
-import Product from "../../database/models/productmodel";
+import Item from "../../database/models/items";
 
 const ProductId = ({ item }) => {
   const router = useRouter();
-  const idofproduct = router.query.id;
+  const idOfProduct = router.query.id;
 
   return (
     <div>
-      <h1>this page is {idofproduct}</h1>
+      <h1>this page is {idOfProduct}</h1>
       <Link href="/products"> a back to the product page</Link>
-      <h1> item title is {item.title}</h1>
+      <h1> item title is {item.shortDescription}</h1>
+      <h1>{item.longDescription}</h1>
+      <h1> {item.price}</h1>
       <Image
-        src={item.image}
-        alt={item.title}
-        width={1000}
-        height={1000}
+        src={item.cardImage}
+        alt="image test"
+        width={300}
+        height={300}
+      ></Image>
+      <Image
+        src={item.images[0]}
+        alt="image test"
+        width={300}
+        height={300}
+      ></Image>
+      <Image
+        src={item.images[1]}
+        alt="image test"
+        width={300}
+        height={300}
       ></Image>
     </div>
   );
@@ -29,7 +43,7 @@ export const getServerSideProps = async (context) => {
   await dataBaseConnection();
   console.log(context.params.id);
   const itemId = context.params.id;
-  const item = await Product.findById(itemId);
+  const item = await Item.findById(itemId);
 
   return {
     props: {

@@ -28,6 +28,9 @@ const Dashboard = (tokens) => {
               Log Out!
             </button>
           </Link>
+          <Link href="/">
+            <button className="bg-slate-300 m-2">Home Page!</button>
+          </Link>
         </div>
       </div>
     );
