@@ -1,5 +1,4 @@
 import dataBaseConnection from "../../../database/connection";
-import Product from "../../../database/models/productmodel";
 import nc from "next-connect";
 import multer from "multer";
 import fs from "fs";

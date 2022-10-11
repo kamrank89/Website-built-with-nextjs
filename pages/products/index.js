@@ -21,6 +21,7 @@ export default function ProductPage({ items }) {
             >
               <a> item page</a>
             </Link>
+
             <Card
               image={item.cardImage}
               title={item.shortDescription}
@@ -39,5 +40,10 @@ export default function ProductPage({ items }) {
 export async function getServerSideProps() {
   await dataBaseConnection();
   const items = await Item.find({});
-  return { props: { items: JSON.parse(JSON.stringify(items)) } };
+
+  return {
+    props: {
+      items: JSON.parse(JSON.stringify(items)),
+    },
+  };
 }
