@@ -72,8 +72,8 @@ apiRouter.post((req, res) => {
 // };
 
 export default apiRouter;
-export const config = {
-  api: {
-    bodyParser: false, // Disallow body parsing, consume as stream
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false, // Disallow body parsing, consume as stream
+//   },
+// };

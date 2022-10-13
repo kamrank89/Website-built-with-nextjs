@@ -28,6 +28,7 @@ apiRouterForAdmin.post((req, res) => {
     return console.log(`${newAdmin.username} has been added to admin database`);
   });
   console.log(newAdmin);
+
   res.redirect("/dashboard");
 });
 
