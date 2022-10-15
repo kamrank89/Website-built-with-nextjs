@@ -8,6 +8,7 @@ import Token from "../../database/models/admintoken";
 import { useRouter } from "next/router";
 
 export default function ProductPage({ items, adminToken }) {
+  const adminAccess = adminToken[0];
   const router = useRouter();
   const deleteItem = async (itemId) => {
     const reqBody = { data: itemId };
@@ -18,10 +19,10 @@ export default function ProductPage({ items, adminToken }) {
     });
     const resResult = await res.json();
     router.reload();
-    console.log(resResult);
+    console.log(adminAccess);
   };
-
-  if (adminToken) {
+  console.log(adminToken);
+  if (adminAccess) {
     return (
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
