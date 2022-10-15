@@ -21,7 +21,15 @@ export default function FooterInfoBar() {
 
       <div className="flex text-white mx-auto text-xs  w-48 mt-36">
         <FontAwesomeIcon icon={faCopyright} />
-        <p>All rights reserved for kamran</p>
+        <p>
+          All rights reserved for{" "}
+          <a
+            className="text-blue-400"
+            href="https://kamrank89.github.io/kamran89.github.io/"
+          >
+            Kamran{" "}
+          </a>
+        </p>
       </div>
     </div>
   );
