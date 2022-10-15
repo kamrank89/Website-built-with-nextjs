@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AdminLogin = (props) => {
   return (
-    <div className="bg-slate-200 w-1/6 rounded m-auto mt-36 h-96">
+    <div className="bg-slate-200 w-1/6 rounded h-96">
       <div>
         <form
           action={props.api}
@@ -27,15 +27,15 @@ const AdminLogin = (props) => {
           >
             Sign In!
           </button>
+          <Link href="/authenticatedadminloginpage">
+            <button
+              type="submit"
+              className="bg-slate-500 w-2/6 mx-auto rounded text-center"
+            >
+              Login
+            </button>
+          </Link>
         </form>
-        <Link href="/authenticatedadminloginpage">
-          <button
-            type="submit"
-            className="bg-slate-500 w-2/6 mx-auto rounded text-center"
-          >
-            Login
-          </button>
-        </Link>
       </div>
     </div>
   );

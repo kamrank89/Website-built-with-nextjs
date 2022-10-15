@@ -8,52 +8,6 @@ export default function contact() {
       <div>
         <h1>this is contact page </h1>
         <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
-        <h1>this is contact page </h1>
       </div>
 
       <div className="mt-auto">
