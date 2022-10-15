@@ -24,7 +24,7 @@ export default function FooterInfoBar() {
         <p>
           All rights reserved for{" "}
           <a
-            className="text-blue-400"
+            className="text-blue-400 hover:text-yellow-400"
             href="https://kamrank89.github.io/kamran89.github.io/"
           >
             Kamran{" "}
