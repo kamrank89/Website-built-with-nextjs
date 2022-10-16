@@ -5,33 +5,38 @@ const DashboardForm = () => {
         action="/api/database/additems"
         method="post"
         encType="multipart/form-data"
-        className="flex flex-col "
+        className="flex flex-col space-y-2"
       >
-        <label htmlFor="shortDescription">shortDescription</label>
-        <input type="text" name="shortDescription" className="rounded" />
+        <label htmlFor="shortDescription">Short Description</label>
+        <input
+          type="text"
+          name="shortDescription"
+          className="rounded"
+          required
+        />
 
-        <label htmlFor="longDescription">longDescription</label>
+        <label htmlFor="longDescription">Long Description</label>
         <input type="text" name="longDescription" className="rounded" />
 
-        <label htmlFor="price">price</label>
-        <input type="number" name="itemPrice" />
+        <label htmlFor="price">Price</label>
+        <input type="number" name="itemPrice" required />
 
-        <label htmlFor="cardImage">cardImage</label>
-        <input type="file" name="cardImage" className="rounded" />
+        <label htmlFor="cardImage">Main Image</label>
+        <input type="file" name="cardImage" className="rounded" required />
 
-        <label htmlFor="image1">image1</label>
+        <label htmlFor="image1">Image 1</label>
         <input type="file" name="images" className="rounded" />
 
-        <label htmlFor="image2">image2</label>
+        <label htmlFor="image2">Image 2</label>
         <input type="file" name="images" className="rounded" />
 
-        <label htmlFor="image3">image3</label>
+        <label htmlFor="image3">Image 3</label>
         <input type="file" name="images" className="rounded" />
 
-        <label htmlFor="image4">image4</label>
+        <label htmlFor="image4">Image 4</label>
         <input type="file" name="images" className="rounded" />
 
-        <label htmlFor="image5">image5</label>
+        <label htmlFor="image5">Image 5</label>
         <input type="file" name="images" className="rounded" />
         <button
           type="submit"

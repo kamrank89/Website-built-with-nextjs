@@ -26,7 +26,7 @@ export default function ProductPage({ items, adminToken }) {
     return (
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
-        this is the product page
+
         <div className="flex flex-wrap ml-16">
           {items.map((item) => (
             <div key={item._id}>
@@ -36,17 +36,19 @@ export default function ProductPage({ items, adminToken }) {
                   query: { id: `${item._id}` },
                 }}
               >
-                <a> item page</a>
+                <a>
+                  <Card
+                    image={item.cardImage}
+                    title={item.shortDescription}
+                    body={item.longDescription}
+                  />
+                </a>
               </Link>
-              <button onClick={() => deleteItem(item._id)}>
-                Delete this item
-              </button>
 
-              <Card
-                image={item.cardImage}
-                title={item.shortDescription}
-                body={item.longDescription}
-              />
+              <button className="rounded bg-blue-100 w-auto text-sm  ">
+                Item Page
+              </button>
+              <button onClick={() => deleteItem(item._id)}>Delete</button>
             </div>
           ))}
         </div>

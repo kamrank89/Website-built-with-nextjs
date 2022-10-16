@@ -3,36 +3,46 @@ import Image from "next/image";
 import Link from "next/link";
 import dataBaseConnection from "../../database/connection";
 import Item from "../../database/models/items";
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer";
 
 const ProductId = ({ item }) => {
   const router = useRouter();
   const idOfProduct = router.query.id;
 
   return (
-    <div>
-      <h1>this page is {idOfProduct}</h1>
-      <Link href="/products"> a back to the product page</Link>
-      <h1> item title is {item.shortDescription}</h1>
-      <h1>{item.longDescription}</h1>
-      <h1> {item.price}</h1>
-      <Image
-        src={item.cardImage}
-        alt="image test"
-        width={300}
-        height={300}
-      ></Image>
-      <Image
-        src={item.images[0]}
-        alt="image test"
-        width={300}
-        height={300}
-      ></Image>
-      <Image
-        src={item.images[1]}
-        alt="image test"
-        width={300}
-        height={300}
-      ></Image>
+    <div className="min-h-screen flex flex-col">
+      <div>
+        <Header />
+      </div>
+      <div className="m-2">
+        <h1>this page is {idOfProduct}</h1>
+        <Link href="/products"> a back to the product page</Link>
+        <h1> item title is {item.shortDescription}</h1>
+        <h1>{item.longDescription}</h1>
+        <h1> {item.price}</h1>
+        <Image
+          src={item.cardImage}
+          alt="image test"
+          width={300}
+          height={300}
+        ></Image>
+        <Image
+          src={item.images[0]}
+          alt="image test"
+          width={300}
+          height={300}
+        ></Image>
+        <Image
+          src={item.images[1]}
+          alt="image test"
+          width={300}
+          height={300}
+        ></Image>
+      </div>
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 };
