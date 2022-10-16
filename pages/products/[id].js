@@ -9,6 +9,17 @@ import Footer from "../../components/footer/footer";
 const ProductId = ({ item }) => {
   const router = useRouter();
   const idOfProduct = router.query.id;
+  const deleteItem = async (itemId) => {
+    const reqBody = { data: itemId };
+    const res = await fetch("/api/database/deleteitem", {
+      method: "delete",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(reqBody),
+    });
+    const resResult = await res.json();
+    console.log(resResult);
+    router.push("http://localhost:3000/products");
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -40,6 +51,7 @@ const ProductId = ({ item }) => {
           height={300}
         ></Image>
       </div>
+      <button onClick={() => deleteItem(idOfProduct)}> Delete Item</button>
       <div className="mt-auto">
         <Footer />
       </div>

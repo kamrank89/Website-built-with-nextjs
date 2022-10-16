@@ -18,7 +18,7 @@ apiRouter.delete((req, res) => {
     }
   );
 
-  res.status(200).json("tada");
+  res.status(200).json("item has benn removed");
 });
 
 export default apiRouter;
