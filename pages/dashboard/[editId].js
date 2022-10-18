@@ -4,6 +4,19 @@ import dataBaseConnection from "../../database/connection";
 import Item from "../../database/models/items";
 import Image from "next/image";
 function Edit({ item }) {
+  const imagesLeft = (param) => {
+    const row = [];
+    for (let i = 4; param.images.length <= i; i--) {
+      row.push(
+        <div className="flex flex-col">
+          <label>this is a row</label>
+          <input key={i} className="rounded" />
+        </div>
+      );
+    }
+    return row;
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <div>
@@ -24,12 +37,21 @@ function Edit({ item }) {
             className="rounded"
           />
           <div>
-            {item.images.map((image) => (
-              <div key={item.images[image]}>
-                {" "}
+            {item.images.map((image, index) => (
+              <div key={index}>
                 <Image src={image} alt="item images" height={300} width={300} />
               </div>
             ))}
+          </div>
+          <div> {console.log(item.images.length)}</div>
+          <div className="flex bg-slate-500 w-1/6 justify-center">
+            <form
+              action="/api/database/edititem"
+              method="put"
+              className="flex flex-col"
+            >
+              {imagesLeft(item)}
+            </form>
           </div>
         </div>
       </div>
