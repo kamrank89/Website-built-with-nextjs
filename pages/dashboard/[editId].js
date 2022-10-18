@@ -10,7 +10,7 @@ function Edit({ item }) {
       row.push(
         <div className="flex flex-col">
           <label>this is a row</label>
-          <input key={i} className="rounded" />
+          <input key={i} className="rounded" type="file" name="images" />
         </div>
       );
     }
@@ -48,6 +48,7 @@ function Edit({ item }) {
             <form
               action="/api/database/edititem"
               method="put"
+              encType="multipart/form-data"
               className="flex flex-col"
             >
               {imagesLeft(item)}
