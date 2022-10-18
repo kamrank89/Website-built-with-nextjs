@@ -44,11 +44,6 @@ export default function ProductPage({ items, adminToken }) {
                   />
                 </a>
               </Link>
-
-              <button className="rounded bg-blue-100 w-auto text-sm  ">
-                Item Page
-              </button>
-              <button onClick={() => deleteItem(item._id)}>Delete</button>
             </div>
           ))}
         </div>

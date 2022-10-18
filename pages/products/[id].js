@@ -52,6 +52,16 @@ const ProductId = ({ item }) => {
         ></Image>
       </div>
       <button onClick={() => deleteItem(idOfProduct)}> Delete Item</button>
+      <Link
+        href={{
+          pathname: "/dashboard/[editId]",
+          query: { editId: `${idOfProduct}` },
+        }}
+      >
+        <a>
+          <button> Edit page</button>
+        </a>
+      </Link>
       <div className="mt-auto">
         <Footer />
       </div>

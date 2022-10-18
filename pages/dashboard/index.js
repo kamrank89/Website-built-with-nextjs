@@ -1,9 +1,9 @@
-import dataBaseConnection from "../database/connection";
+import dataBaseConnection from "../../database/connection";
 import Link from "next/link";
-import Token from "../database/models/admintoken";
-import DashboardForm from "../components/forms/dashboardform";
-import Header from "../components/header/header";
-import Footer from "../components/footer/footer";
+import Token from "../../database/models/admintoken";
+import DashboardForm from "../../components/forms/dashboardform";
+import Header from "../../components/header/header";
+import Footer from "../../components/footer/footer";
 
 const Dashboard = (tokens) => {
   const deleteItem = async () => {
