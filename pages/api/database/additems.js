@@ -44,7 +44,6 @@ apiRouter.post(arrayOfImages, async (req, res) => {
         if (err) console.log(err);
 
         fs.unlinkSync(req.files["images"][i].path);
-        // TODO : need to implement the data save to database
       }
     );
     urlArray.push(res.secure_url);

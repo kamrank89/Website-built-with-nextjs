@@ -46,12 +46,13 @@ function Edit({ item }) {
           <div> {console.log(item.images.length)}</div>
           <div className="flex bg-slate-500 w-1/6 justify-center">
             <form
-              action="/api/database/edititem"
-              method="put"
+              action={`/api/database/${item._id}`}
+              method="post"
               encType="multipart/form-data"
               className="flex flex-col"
             >
               {imagesLeft(item)}
+              <button type="submit"> Submit</button>
             </form>
           </div>
         </div>
