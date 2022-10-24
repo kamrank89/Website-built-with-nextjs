@@ -4,8 +4,10 @@ import Header from "../components/header/header";
 import dataBaseConnection from "../database/connection";
 import Product from "../database/models/productmodel";
 import Image from "next/image";
-
+import { getCookie } from "cookies-next";
 export default function Home({ products }) {
+  const cookieValue = getCookie("tokenId");
+  console.log(cookieValue);
   return (
     <div>
       <Head>

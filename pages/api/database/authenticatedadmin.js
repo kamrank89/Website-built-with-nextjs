@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import nc from "next-connect";
 import dataBaseConnection from "../../../database/connection";
 import Token from "../../../database/models/admintoken";
+import { getCookies, getCookie, setCookie, deleteCookie } from "cookies-next";
+
 const adminAuthenticatedRouter = nc({
   onNoMatch(req, res) {
     res.statusCode(405), json({ error: `method ${req.method} not allowed` });
@@ -21,33 +23,38 @@ adminAuthenticatedRouter.post(async (req, res) => {
   const authenticated = bcrypt.compareSync(req.body.password, hashedPassword);
   console.log(authenticated);
   if (authenticated) {
-    const newToken = new Token({
+    const newToken = await new Token({
       title: "test",
       body: "test",
     });
 
-    newToken.save((err) => {
+    await newToken.save((err) => {
       if (err) {
         console.log(err);
       }
       console.log(`${newToken} has been added to databse`);
     });
 
+    setCookie("tokenId", verifiedAdmin._id, {
+      req,
+      res,
+      maxAge: 300,
+    });
+    // getCookies({ req, res });
+
     res.redirect("/dashboard");
-    return;
   }
 
   res.redirect("/authenticatedadminloginpage");
-  return;
 });
 
-adminAuthenticatedRouter.delete(async (req, res) => {
-  await dataBaseConnection();
-  Token.findOneAndDelete({ title: "test" }, (err, deleteditem) => {
-    if (err) console.log();
-    console.log(`${deleteditem} has been removed from database`);
-  });
-  res.redirect("/");
-});
+// adminAuthenticatedRouter.delete(async (req, res) => {
+//   await dataBaseConnection();
+//   Token.findOneAndDelete({ title: "test" }, (err, deleteditem) => {
+//     if (err) console.log();
+//     console.log(`${deleteditem} has been removed from database`);
+//   });
+//   res.redirect("/");
+// });
 
 export default adminAuthenticatedRouter;

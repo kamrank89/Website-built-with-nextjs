@@ -6,9 +6,14 @@ import Link from "next/link";
 import Item from "../../database/models/items";
 import Token from "../../database/models/admintoken";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+import Info from "../../database/models/adminmodel";
 
-export default function ProductPage({ items, adminToken }) {
+export default function ProductPage({ items, adminToken, adminInfo }) {
   const adminAccess = adminToken[0];
+  const adminTokenId = getCookie("tokenId");
+  console.log(adminTokenId);
+
   const router = useRouter();
   const deleteItem = async (itemId) => {
     const reqBody = { data: itemId };
@@ -22,7 +27,7 @@ export default function ProductPage({ items, adminToken }) {
     console.log(adminAccess);
   };
   console.log(adminToken);
-  if (adminAccess) {
+  if (adminAccess && adminTokenId === adminInfo._id) {
     return (
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
@@ -88,11 +93,13 @@ export async function getServerSideProps() {
   await dataBaseConnection();
   const items = await Item.find({});
   const adminToken = await Token.find({});
+  const adminInfo = await Info.findOne({ username: "admin" });
 
   return {
     props: {
       items: JSON.parse(JSON.stringify(items)),
       adminToken: JSON.parse(JSON.stringify(adminToken)),
+      adminInfo: JSON.parse(JSON.stringify(adminInfo)),
     },
   };
 }

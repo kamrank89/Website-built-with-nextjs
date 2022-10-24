@@ -17,7 +17,6 @@ apiRouter.delete((req, res) => {
       return console.log(`${founditem._id} has been found and been deleted`);
     }
   );
-
   res.status(200).json("item has benn removed");
 });
 
