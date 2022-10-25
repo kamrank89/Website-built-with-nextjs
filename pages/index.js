@@ -68,7 +68,8 @@ export default function Home({ products }) {
     </div>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  console.log(context.req.cookies.tokenId);
   await dataBaseConnection();
   const products = await Product.find({});
   return { props: { products: JSON.parse(JSON.stringify(products)) } };

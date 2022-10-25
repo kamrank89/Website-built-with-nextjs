@@ -39,6 +39,7 @@ adminAuthenticatedRouter.post(async (req, res) => {
       req,
       res,
       maxAge: 300,
+      httpOnly: true,
     });
     // getCookies({ req, res });
 

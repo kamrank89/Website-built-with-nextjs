@@ -4,8 +4,8 @@ import Token from "../../database/models/admintoken";
 import DashboardForm from "../../components/forms/dashboardform";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
-
-const Dashboard = (tokens) => {
+import Info from "../../database/models/adminmodel";
+const Dashboard = (tokens, cookieTokenId, adminInfo) => {
   const deleteItem = async () => {
     const res = await fetch("api/database/addadmindata", {
       method: "DELETE",
@@ -13,8 +13,10 @@ const Dashboard = (tokens) => {
     const resJson = await res.json();
     console.log(resJson);
   };
-  console.log(tokens.tokens[0]);
-  if (tokens.tokens[0]) {
+  console.log(`this is ${tokens.cookieTokenId} cookie token id`);
+  console.log(`this is ${tokens.adminInfo._id} admin info`);
+  console.log(tokens.tokens);
+  if (tokens.tokens[0] && tokens.cookieTokenId === tokens.adminInfo._id) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
@@ -58,9 +60,18 @@ const Dashboard = (tokens) => {
 
 export default Dashboard;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   await dataBaseConnection();
   const tokens = await Token.find({});
+  const adminInfo = await Info.findOne({ title: "admin" });
 
-  return { props: { tokens: JSON.parse(JSON.stringify(tokens)) } };
+  const cookieTokenId = context.req.cookies.tokenId || "";
+
+  return {
+    props: {
+      tokens: JSON.parse(JSON.stringify(tokens)),
+      cookieTokenId,
+      adminInfo: JSON.parse(JSON.stringify(adminInfo)),
+    },
+  };
 }

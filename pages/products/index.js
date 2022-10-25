@@ -9,10 +9,13 @@ import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import Info from "../../database/models/adminmodel";
 
-export default function ProductPage({ items, adminToken, adminInfo }) {
+export default function ProductPage({
+  items,
+  adminToken,
+  adminInfo,
+  cookieTokenId,
+}) {
   const adminAccess = adminToken[0];
-  const adminTokenId = getCookie("tokenId");
-  console.log(adminTokenId);
 
   const router = useRouter();
   const deleteItem = async (itemId) => {
@@ -26,8 +29,8 @@ export default function ProductPage({ items, adminToken, adminInfo }) {
     router.reload();
     console.log(adminAccess);
   };
-  console.log(adminToken);
-  if (adminAccess && adminTokenId === adminInfo._id) {
+
+  if (adminAccess && adminInfo._id === cookieTokenId) {
     return (
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
@@ -89,17 +92,18 @@ export default function ProductPage({ items, adminToken, adminInfo }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   await dataBaseConnection();
   const items = await Item.find({});
   const adminToken = await Token.find({});
   const adminInfo = await Info.findOne({ username: "admin" });
-
+  const cookieTokenId = context.req.cookies.tokenId || "no cookies";
   return {
     props: {
       items: JSON.parse(JSON.stringify(items)),
       adminToken: JSON.parse(JSON.stringify(adminToken)),
       adminInfo: JSON.parse(JSON.stringify(adminInfo)),
+      cookieTokenId,
     },
   };
 }
