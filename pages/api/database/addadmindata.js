@@ -44,6 +44,7 @@ apiRouterForAdmin.delete(async (req, res) => {
       );
     }
   );
+  res.redirect("/");
 });
 
 export default apiRouterForAdmin;

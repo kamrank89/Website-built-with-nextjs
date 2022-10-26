@@ -27,10 +27,10 @@ export default function ProductPage({
     });
     const resResult = await res.json();
     router.reload();
-    console.log(adminAccess);
   };
 
   if (adminAccess && adminInfo._id === cookieTokenId) {
+    /* Admin view */
     return (
       <div className="min-h-screen flex flex-col bg-slate-200">
         <Header />
@@ -48,7 +48,7 @@ export default function ProductPage({
                   <Card
                     image={item.cardImage}
                     title={item.shortDescription}
-                    body={item.longDescription}
+                    price={item.price}
                   />
                 </a>
               </Link>
@@ -61,11 +61,13 @@ export default function ProductPage({
       </div>
     );
   }
+
+  /* User view */
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-200">
       <Header />
-      this is the product page
-      <div className="flex flex-wrap ml-16">
+      <div className="flex flex-wrap ml-20 mt-4 mb-4 z-0">
         {items.map((item) => (
           <div key={item._id}>
             <Link
@@ -74,14 +76,14 @@ export default function ProductPage({
                 query: { id: `${item._id}` },
               }}
             >
-              <a> item page</a>
+              <a>
+                <Card
+                  image={item.cardImage}
+                  title={item.shortDescription}
+                  price={item.price}
+                />
+              </a>
             </Link>
-
-            <Card
-              image={item.cardImage}
-              title={item.shortDescription}
-              body={item.longDescription}
-            />
           </div>
         ))}
       </div>

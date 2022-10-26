@@ -5,6 +5,7 @@ import Item from "../../database/models/items";
 import Image from "next/image";
 import Token from "../../database/models/admintoken";
 import Info from "../../database/models/adminmodel";
+
 function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
   const imagesLeft = (param) => {
     const row = [];

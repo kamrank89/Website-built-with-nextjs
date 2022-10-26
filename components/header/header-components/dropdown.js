@@ -8,16 +8,16 @@ export default function DropDown() {
   const { data: session } = useSession();
   if (session) {
     return (
-      <div className="absolute -right-6">
+      <div className="absolute -right-6 z-10">
         <button
-          className="rounded bg-gray-400 w-28 text-lg p-2 mt-2 "
+          className="rounded bg-gray-400 w-28 text-lg p-2 mt-2 z-10 "
           onClick={dropDownModifier}
         >
           Options
         </button>
         <div>
           {isdropdown && (
-            <div className="text-center ">
+            <div className="text-center z-10">
               <div className="rounded hover:bg-gray-800 hover:text-white bg-gray-400 text-lg p-2 mt-2">
                 <Link href="/"> Home </Link>
               </div>
@@ -38,7 +38,7 @@ export default function DropDown() {
     );
   }
   return (
-    <div className="absolute -right-6">
+    <div className="absolute -right-6 z-10">
       <button
         className="rounded bg-gray-400 w-28 text-lg p-2 mt-2 "
         onClick={dropDownModifier}

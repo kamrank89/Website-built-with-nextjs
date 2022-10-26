@@ -38,7 +38,7 @@ adminAuthenticatedRouter.post(async (req, res) => {
     setCookie("tokenId", verifiedAdmin._id, {
       req,
       res,
-      maxAge: 300,
+      maxAge: 1200,
       httpOnly: true,
     });
     // getCookies({ req, res });

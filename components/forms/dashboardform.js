@@ -1,25 +1,47 @@
 const DashboardForm = () => {
   return (
-    <div className="flex bg-slate-400 w-1/6 justify-center rounded ">
+    <div className="flex flex-col bg-slate-400 w-4/6 items-center  my-2 mx-auto rounded ">
+      <div>
+        <h1 className="justify-center text-3xl my-8 hover:text-yellow-400 cursor-pointer bg-slate-600 p-4 rounded">
+          Form to add products to the website
+        </h1>
+      </div>
       <form
         action="/api/database/additems"
         method="post"
         encType="multipart/form-data"
-        className="flex flex-col space-y-2"
+        className="flex flex-col space-y-2 "
       >
         <label htmlFor="shortDescription">Short Description</label>
         <input
           type="text"
+          maxLength={150}
           name="shortDescription"
           className="rounded"
           required
         />
 
         <label htmlFor="longDescription">Long Description</label>
-        <input type="text" name="longDescription" className="rounded" />
+        <textarea
+          rows={10}
+          cols={150}
+          wrap="hard"
+          name="longDescription"
+          placeholder="write somethiong usefull"
+          className="rounded resize-none "
+          spellCheck="true"
+        />
 
         <label htmlFor="price">Price</label>
-        <input type="number" name="itemPrice" required />
+        <input
+          type="number"
+          step="0.01"
+          min="0"
+          placeholder="Negative values are not allowed"
+          name="itemPrice"
+          className="rounded w-3/12"
+          required
+        />
 
         <label htmlFor="cardImage">Main Image</label>
         <input type="file" name="cardImage" className="rounded" required />

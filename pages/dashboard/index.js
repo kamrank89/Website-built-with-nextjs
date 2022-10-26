@@ -40,6 +40,7 @@ const Dashboard = (tokens, cookieTokenId, adminInfo) => {
       </div>
     );
   }
+  /* Unauthorized user */
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

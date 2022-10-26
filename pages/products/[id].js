@@ -9,9 +9,6 @@ import Footer from "../../components/footer/footer";
 import Token from "../../database/models/admintoken";
 
 const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
-  console.log(adminInfo);
-  console.log(cookieTokenId);
-  console.log(adminToken);
   const router = useRouter();
   const idOfProduct = router.query.id;
   const deleteItem = async (itemId) => {
@@ -22,19 +19,36 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
       body: JSON.stringify(reqBody),
     });
     const resResult = await res.json();
-    console.log(resResult);
     router.push("http://localhost:3000/products");
   };
+
+  const imageToShow = (param) => {
+    const row = [];
+    for (let i = 0; i < param.images.length; i++) {
+      row.push(
+        <div className="max-w-max transform  cursor-pointer block">
+          <Image
+            src={param.images[i]}
+            alt="image test"
+            width={300}
+            height={300}
+          ></Image>
+        </div>
+      );
+    }
+    return row;
+  };
+
   if (adminToken && cookieTokenId === adminInfo._id) {
+    /* Admin view */
     return (
       <div className="min-h-screen flex flex-col">
         <div>
           <Header />
         </div>
         <div className="m-2">
-          <h1>this page is {idOfProduct}</h1>
           <Link href="/products"> a back to the product page</Link>
-          <h1> item title is {item.shortDescription}</h1>
+          <h1> {item.shortDescription}</h1>
           <h1>{item.longDescription}</h1>
           <h1> {item.price}</h1>
           <Image
@@ -73,36 +87,26 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
       </div>
     );
   }
+
+  /* User view */
   return (
     <div className="min-h-screen flex flex-col">
       <div>
         <Header />
       </div>
       <div className="m-2">
-        <h1>this page is {idOfProduct}</h1>
-        <Link href="/products"> a back to the product page</Link>
         <h1> item title is {item.shortDescription}</h1>
         <h1>{item.longDescription}</h1>
         <h1> {item.price}</h1>
         <Image
           src={item.cardImage}
           alt="image test"
-          width={300}
-          height={300}
-        ></Image>
-        <Image
-          src={item.images[0]}
-          alt="image test"
-          width={300}
-          height={300}
-        ></Image>
-        <Image
-          src={item.images[1]}
-          alt="image test"
-          width={300}
-          height={300}
+          width={500}
+          height={500}
+          className="cursor-pointer"
         ></Image>
       </div>
+      <div>{imageToShow(item)}</div>
 
       <div className="mt-auto">
         <Footer />
@@ -115,7 +119,6 @@ export default ProductId;
 
 export const getServerSideProps = async (context) => {
   await dataBaseConnection();
-  console.log(context.params.id);
   const itemId = context.params.id;
   const item = await Item.findById(itemId);
   const cookieTokenId = context.req.cookies.tokenId || "no cookies";
