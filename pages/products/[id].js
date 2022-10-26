@@ -21,7 +21,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
     const resResult = await res.json();
     router.push("http://localhost:3000/products");
   };
-  const adminComponent = () => {
+  const adminComponents = () => {
     const col = [];
     if (adminToken && cookieTokenId === adminInfo._id) {
       col.push(
@@ -92,7 +92,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
         ></Image>
       </div>
       <div>{imageToShow(item)}</div>
-      {adminComponent()}
+      {adminComponents()}
       <div className="mt-auto">
         <Footer />
       </div>
