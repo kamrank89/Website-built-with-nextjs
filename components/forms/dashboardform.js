@@ -10,7 +10,7 @@ const DashboardForm = () => {
         action="/api/database/additems"
         method="post"
         encType="multipart/form-data"
-        className="flex flex-col space-y-2 "
+        className="flex flex-col space-y-2 m-4"
       >
         <label htmlFor="shortDescription">Short Description</label>
         <input
@@ -62,7 +62,7 @@ const DashboardForm = () => {
         <input type="file" name="images" className="rounded" />
         <button
           type="submit"
-          className="rounded bg-slate-200 hover:bg-slate-500"
+          className="rounded bg-slate-200 hover:bg-slate-600 w-2/12 mx-auto p-4 "
         >
           {" "}
           Submit{" "}

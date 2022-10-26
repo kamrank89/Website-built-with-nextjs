@@ -13,9 +13,6 @@ const Dashboard = (tokens, cookieTokenId, adminInfo) => {
     const resJson = await res.json();
     console.log(resJson);
   };
-  console.log(`this is ${tokens.cookieTokenId} cookie token id`);
-  console.log(`this is ${tokens.adminInfo._id} admin info`);
-  console.log(tokens.tokens);
   if (tokens.tokens[0] && tokens.cookieTokenId === tokens.adminInfo._id) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -24,14 +21,14 @@ const Dashboard = (tokens, cookieTokenId, adminInfo) => {
         <div className="flex flex-col ">
           <DashboardForm />
         </div>
-        <div>
+        <div className="m-4 flex">
           <Link href="/">
-            <button onClick={deleteItem} className="bg-slate-300">
+            <button
+              onClick={deleteItem}
+              className="bg-slate-600 p-2 w-3/12 rounded mx-auto  hover:bg-slate-200"
+            >
               Log Out!
             </button>
-          </Link>
-          <Link href="/">
-            <button className="bg-slate-300 m-2">Home Page!</button>
           </Link>
         </div>
         <div className="mt-auto">
