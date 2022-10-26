@@ -28,6 +28,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
       row.push(
         <div className="max-w-max transform  cursor-pointer block">
           <Image
+            key={i}
             src={param.images[i]}
             alt="image test"
             width={300}
