@@ -21,7 +21,40 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
     const resResult = await res.json();
     router.push("http://localhost:3000/products");
   };
-
+  const adminComponent = () => {
+    const col = [];
+    if (adminToken && cookieTokenId === adminInfo._id) {
+      col.push(
+        <div className="m-8 flex flex-col space-y-4 ">
+          <div className="self-center">
+            <button
+              className="bg-slate-400 rounded  p-2 w-64 hover:bg-slate-600 "
+              onClick={() => deleteItem(idOfProduct)}
+            >
+              {" "}
+              delete item
+            </button>
+          </div>
+          <div className="self-center">
+            <Link
+              href={{
+                pathname: "/dashboard/[editId]",
+                query: { editId: `${idOfProduct}` },
+              }}
+            >
+              <a>
+                <button className="bg-slate-400 rounded w-64 p-2 hover:bg-slate-600">
+                  {" "}
+                  Edit page
+                </button>
+              </a>
+            </Link>
+          </div>
+        </div>
+      );
+    }
+    return col;
+  };
   const imageToShow = (param) => {
     const row = [];
     for (let i = 0; i < param.images.length; i++) {
@@ -39,55 +72,6 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
     }
     return row;
   };
-
-  if (adminToken && cookieTokenId === adminInfo._id) {
-    /* Admin view */
-    return (
-      <div className="min-h-screen flex flex-col">
-        <div>
-          <Header />
-        </div>
-        <div className="m-2">
-          <Link href="/products"> a back to the product page</Link>
-          <h1> {item.shortDescription}</h1>
-          <h1>{item.longDescription}</h1>
-          <h1> {item.price}</h1>
-          <Image
-            src={item.cardImage}
-            alt="image test"
-            width={300}
-            height={300}
-          ></Image>
-          <Image
-            src={item.images[0]}
-            alt="image test"
-            width={300}
-            height={300}
-          ></Image>
-          <Image
-            src={item.images[1]}
-            alt="image test"
-            width={300}
-            height={300}
-          ></Image>
-        </div>
-        <button onClick={() => deleteItem(idOfProduct)}> Delete Item</button>
-        <Link
-          href={{
-            pathname: "/dashboard/[editId]",
-            query: { editId: `${idOfProduct}` },
-          }}
-        >
-          <a>
-            <button> Edit page</button>
-          </a>
-        </Link>
-        <div className="mt-auto">
-          <Footer />
-        </div>
-      </div>
-    );
-  }
 
   /* User view */
   return (
@@ -108,7 +92,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
         ></Image>
       </div>
       <div>{imageToShow(item)}</div>
-
+      {adminComponent()}
       <div className="mt-auto">
         <Footer />
       </div>
