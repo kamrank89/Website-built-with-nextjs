@@ -1,7 +1,8 @@
 
 ## Getting Started
 
-First, Clone the project into your desired dirctory.  
+First, Clone the project into your desired dirctory. 
+  
 Second, run the npm install
 
 Third, run the development server:
