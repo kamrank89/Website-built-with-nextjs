@@ -1,7 +1,10 @@
 
 ## Getting Started
 
-First, run the development server:
+First, Clone the project into your disered dirctory.
+Second, run the npm install
+
+Third, run the development server:
 
 ```bash
 npm run dev
