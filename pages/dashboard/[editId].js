@@ -5,6 +5,7 @@ import Item from "../../database/models/items";
 import Image from "next/image";
 import Token from "../../database/models/admintoken";
 import Info from "../../database/models/adminmodel";
+import Link from "next/link";
 
 function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
   const imagesLeft = (param) => {
@@ -60,7 +61,13 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
                 className="flex flex-col"
               >
                 {imagesLeft(item)}
-                <button type="submit"> Submit</button>
+                <button
+                  type="submit"
+                  className="bg-slate-200 hover:bg-slate-600"
+                >
+                  {" "}
+                  Submit
+                </button>
               </form>
             </div>
           </div>
@@ -72,8 +79,19 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
     );
   }
   return (
-    <div>
-      <p> you are not authorized</p>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="mx-auto flex flex-col mt-8 space-y-8">
+        <h1> You are not authorized to access this page please Log in !!! </h1>
+        <Link href="/adminloginpage">
+          <button className="bg-slate-500 hover:bg-slate-200 w-2/6 self-center rounded text-center">
+            Log In
+          </button>
+        </Link>
+      </div>
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }

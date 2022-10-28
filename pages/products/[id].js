@@ -64,8 +64,8 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
             key={i}
             src={param.images[i]}
             alt="image test"
-            width={300}
-            height={300}
+            width={500}
+            height={500}
           ></Image>
         </div>
       );
@@ -79,19 +79,48 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
       <div>
         <Header />
       </div>
-      <div className="m-2">
-        <h1> item title is {item.shortDescription}</h1>
-        <h1>{item.longDescription}</h1>
-        <h1> {item.price}</h1>
-        <Image
-          src={item.cardImage}
-          alt="image test"
-          width={500}
-          height={500}
-          className="cursor-pointer"
-        ></Image>
+      <div className="flex flex-row relative m-4">
+        <div className="w-2/12 m-2">
+          <Image
+            src={item.cardImage}
+            alt="image test"
+            width={300}
+            height={300}
+            className="cursor-pointer rounded"
+          ></Image>
+        </div>
+        <div className="p-2 w-8/12 absolute right-8 min-h-full border-2 rounded border-slate-200 ">
+          <div className="relative">
+            <div>
+              <h1 className="font-bold"> Abot this product !</h1>
+            </div>
+            <div className="m-2 max-h-24 overflow-scroll">
+              <div>
+                <p> item title is {item.shortDescription}</p>
+              </div>
+              <div>
+                <p>
+                  {item.longDescription}
+                  <br />
+                  asdadsadasdasd
+                  <br />
+                </p>
+              </div>
+            </div>
+            <div className="absolute flex flex-row">
+              <p className="bg-slate-200 rounded p-2 max-h-10 my-auto">
+                {" "}
+                {item.price} $
+              </p>
+              <button className="bg-slate-200 rounded p-2 m-2">
+                {" "}
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>{imageToShow(item)}</div>
+      <div className="m-8 mt-32">{imageToShow(item)}</div>
       {adminComponents()}
       <div className="mt-auto">
         <Footer />
