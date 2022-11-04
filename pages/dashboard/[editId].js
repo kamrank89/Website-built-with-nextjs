@@ -13,7 +13,7 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
     for (let i = 4; param.images.length <= i; i--) {
       row.push(
         <div className="flex flex-col">
-          <label>this is a row</label>
+          <label>Image {i}</label>
           <input key={i} className="rounded" type="file" name="images" />
         </div>
       );
@@ -32,22 +32,24 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
           <div> {item.shortDescription}</div>
           <div> {item.longDescription} </div>
           <div>
-            {" "}
-            <Image
-              src={item.cardImage}
-              alt="avatar image"
-              width={400}
-              height={400}
-              className="rounded"
-            />
-            <div>
+            <div className="flex flex-row">
+              <p>this is the avatar </p>{" "}
+              <Image
+                src={item.cardImage}
+                alt="avatar image"
+                width={200}
+                height={200}
+                className="rounded"
+              />
+            </div>
+            <div className="flex flex-row">
               {item.images.map((image, index) => (
                 <div key={index}>
                   <Image
                     src={image}
                     alt="item images"
-                    height={300}
-                    width={300}
+                    height={150}
+                    width={150}
                   />
                 </div>
               ))}

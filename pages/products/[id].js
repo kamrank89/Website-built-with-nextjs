@@ -32,7 +32,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
               onClick={() => deleteItem(idOfProduct)}
             >
               {" "}
-              delete item
+              Delete item
             </button>
           </div>
           <div className="self-center">
@@ -89,7 +89,7 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
             className="cursor-pointer rounded"
           ></Image>
         </div>
-        <div className="p-2 w-8/12 absolute right-8 min-h-full border-2 rounded border-slate-200 ">
+        <div className="p-2 w-8/12 absolute right-8 min-h-full border-2 rounded-2xl border-slate-200 ">
           <div className="relative">
             <div>
               <h1 className="font-bold"> Abot this product !</h1>
