@@ -6,6 +6,7 @@ import Image from "next/image";
 import Token from "../../database/models/admintoken";
 import Info from "../../database/models/adminmodel";
 import Link from "next/link";
+import EditPageForm from "../../components/forms/editpageform";
 
 function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
   const imagesLeft = (param) => {
@@ -28,9 +29,16 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
           <Header />
         </div>
         <div className="m-2">
-          <div> this is the edit page for {item._id}</div>
-          <div> {item.shortDescription}</div>
-          <div> {item.longDescription} </div>
+          <div>
+            <div> this is the edit page for {item._id}</div>
+            <div> {item.shortDescription}</div>
+            <div> {item.longDescription} </div>
+            <div> {item.price} </div>
+            <div>
+              {/* TODO: code the API for the following form */}
+              <EditPageForm api={`/api/database/itemcontent/${item._id}`} />
+            </div>
+          </div>
           <div>
             <div className="flex flex-row">
               <p>this is the avatar </p>{" "}
