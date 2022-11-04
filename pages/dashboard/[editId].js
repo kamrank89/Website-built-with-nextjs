@@ -35,8 +35,12 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
             <div> {item.longDescription} </div>
             <div> {item.price} </div>
             <div>
-              {/* TODO: code the API for the following form */}
-              <EditPageForm api={`/api/database/itemcontent/${item._id}`} />
+              <EditPageForm
+                api={`/api/database/itemcontent/${item._id}`}
+                shortPlaceHolder={item.shortDescription}
+                longPlaceHolder={item.longDescription}
+                pricePlaceHolder={item.price}
+              />
             </div>
           </div>
           <div>

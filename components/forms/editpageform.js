@@ -17,6 +17,7 @@ const EditPageForm = (props) => {
           maxLength={150}
           name="shortDescription"
           className="rounded"
+          placeholder={props.shortPlaceHolder}
           required
         />
 
@@ -26,7 +27,7 @@ const EditPageForm = (props) => {
           cols={150}
           wrap="hard"
           name="longDescription"
-          placeholder="write somethiong usefull"
+          placeholder={props.longPlaceHolder}
           className="rounded resize-none "
           spellCheck="true"
         />
@@ -36,7 +37,7 @@ const EditPageForm = (props) => {
           type="number"
           step="0.01"
           min="0"
-          placeholder="Negative values are not allowed"
+          placeholder={props.pricePlaceHolder}
           name="itemPrice"
           className="rounded w-3/12"
           required
