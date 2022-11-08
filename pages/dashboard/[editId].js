@@ -30,10 +30,6 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
         </div>
         <div className="m-2">
           <div>
-            <div> this is the edit page for {item._id}</div>
-            <div> {item.shortDescription}</div>
-            <div> {item.longDescription} </div>
-            <div> {item.price} </div>
             <div>
               <EditPageForm
                 api={`/api/database/itemcontent/${item._id}`}
@@ -42,6 +38,10 @@ function Edit({ item, adminToken, cookieTokenId, adminInfo }) {
                 pricePlaceHolder={item.price}
               />
             </div>
+            <div> this is the edit page for {item._id}</div>
+            <div> {item.shortDescription}</div>
+            <div> {item.longDescription} </div>
+            <div> {item.price} </div>
           </div>
           <div>
             <div className="flex flex-row">

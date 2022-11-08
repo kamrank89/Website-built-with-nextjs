@@ -11,6 +11,9 @@ const apiRouteredit = nc({
     res.status(404).end("Page is not found");
   },
 });
+apiRouteredit.get((req, res) => {
+  res.status(200).json("this is edit item API");
+});
 apiRouteredit.post((req, res) => {
   dataBaseConnection();
   const modifiedItem = Item.findOneAndUpdate(

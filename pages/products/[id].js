@@ -7,8 +7,12 @@ import Header from "../../components/header/header";
 import Info from "../../database/models/adminmodel";
 import Footer from "../../components/footer/footer";
 import Token from "../../database/models/admintoken";
+import { useSession } from "next-auth/react";
 
 const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
+  const { data } = useSession();
+  console.log(data);
+
   const router = useRouter();
   const idOfProduct = router.query.id;
   const deleteItem = async (itemId) => {
@@ -19,6 +23,22 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
       body: JSON.stringify(reqBody),
     });
     const resResult = await res.json();
+    router.push("http://localhost:3000/products");
+  };
+  const addItemToCart = async () => {
+    const reqBody = {
+      shortDescription: item.shortDescription,
+      price: item.price,
+      cardImage: item.cardImage,
+      userName: data.user.name,
+    };
+    const res = await fetch("/api/database/additemtocart", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(reqBody),
+    });
+    const resResult = res.json();
+    console.log(resResult);
     router.push("http://localhost:3000/products");
   };
   const adminComponents = () => {
@@ -59,9 +79,8 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
     const row = [];
     for (let i = 0; i < param.images.length; i++) {
       row.push(
-        <div className="max-w-max transform  cursor-pointer block">
+        <div key={i} className="max-w-max transform  cursor-pointer block">
           <Image
-            key={i}
             src={param.images[i]}
             alt="image test"
             width={500}
@@ -112,7 +131,10 @@ const ProductId = ({ item, adminInfo, cookieTokenId, adminToken }) => {
                 {" "}
                 {item.price} $
               </p>
-              <button className="bg-slate-200 rounded p-2 m-2">
+              <button
+                onClick={() => addItemToCart()}
+                className="bg-slate-200 rounded p-2 m-2"
+              >
                 {" "}
                 Add to Cart
               </button>
