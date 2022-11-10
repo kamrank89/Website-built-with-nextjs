@@ -1,8 +1,8 @@
-import Header from "../components/header/header";
+import Header from "../../components/header/header";
 import { useSession } from "next-auth/react";
-import Footer from "../components/footer/footer";
-import dataBaseConnection from "../database/connection";
-import CartItems from "../database/models/usercart";
+import Footer from "../../components/footer/footer";
+import dataBaseConnection from "../../database/connection";
+import CartItems from "../../database/models/usercart";
 import { data } from "autoprefixer";
 
 // TODO: need to impelemnt a way to show cart content based on user name

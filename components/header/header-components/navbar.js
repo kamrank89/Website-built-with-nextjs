@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const { data: session } = useSession();
+
   if (session) {
     return (
       <div>
@@ -19,7 +20,14 @@ export default function Navbar() {
           </li>
 
           <li className="rounded bg-gray-400 text-lg p-2 w-28  text-center hover:bg-gray-800 hover:text-white">
-            <Link href="/cart">Your Cart </Link>
+            <Link
+              href={{
+                pathname: "/cart/[user]",
+                query: { user: `${session.user.name}` },
+              }}
+            >
+              Your Cart
+            </Link>
           </li>
         </ul>
       </div>

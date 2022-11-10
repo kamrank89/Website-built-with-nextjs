@@ -29,7 +29,14 @@ export default function DropDown() {
                 <Link href="/contact">Contact Us</Link>
               </div>
               <div className="rounded bg-gray-400 text-lg p-2 mt-2 hover:bg-gray-800 hover:text-white">
-                <Link href="/cart">Your Cart </Link>
+                <Link
+                  href={{
+                    pathname: "/cart/[user]",
+                    query: { user: `${session.user.name}` },
+                  }}
+                >
+                  Your Cart
+                </Link>
               </div>
             </div>
           )}
